@@ -10,7 +10,7 @@ Flutter
 - [Flutter](https://flutter.dev/) instalado e configurado
 
 ### 2. Instalação
-Clone o repositório e instale as dependências:
+Clone o repositório.
 ```bash
   git clone https://github.com/Hanahadashi/produto_front.git
 ```
@@ -22,8 +22,8 @@ Instale as dependencias
 ```
  flutter pub get
 ```
-É necessário rodar a API para que o frontend funcione. Siga o read.me do [produto-api](https://github.com/pgrigolli/produto-api) para rodar a API.
-Para executar o frontend, utilize o comando:
+- Certifique-se de que a API de produtos está em execução. Siga as instruções no README do [produto-api](https://github.com/Hanahadashi/produto-api.git) para configurar a API.
+- Para executar o frontend, utilize o comando:
 ```
  flutter run
 ```
