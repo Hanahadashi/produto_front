@@ -3,11 +3,11 @@
 Este projeto é o frontend da [API de produtos](https://github.com/Hanahadashi/produto-api).
 
 ## Tecnologias usadas
-Flutter
+Flutter.
 
 ## Como executar o projeto
 ### 1. Pré-requisitos
-- [Flutter](https://flutter.dev/) instalado e configurado
+- [Flutter](https://flutter.dev/) instalado e configurado.
 
 ### 2. Instalação
 Clone o repositório.
@@ -18,7 +18,7 @@ Entre no diretório onde o projeto foi copiado.
 ```bash
 cd produto-front
 ```
-Instale as dependencias
+Instale as dependencias.
 ```
  flutter pub get
 ```
