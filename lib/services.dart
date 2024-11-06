@@ -1,13 +1,16 @@
+// services.dart
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'produto.dart';
+import 'confirmacao.dart';
 
 class ProdutoService {
   final String baseUrl = "http://localhost:3000/produtos";
 
   Future<List<Produto>> fetchProdutos() async {
     final response = await http.get(Uri.parse(baseUrl));
-    print(response.body); // Adiciona um print para depurar a resposta
+    print(response.body);
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       return jsonResponse.map((produto) => Produto.fromJson(produto)).toList();
@@ -15,7 +18,6 @@ class ProdutoService {
       throw Exception('Erro ao carregar produtos');
     }
   }
-
 
   Future<Produto> createProduto(Produto produto) async {
     final response = await http.post(
@@ -36,7 +38,10 @@ class ProdutoService {
     }
   }
 
-  Future<void> updateProduto(Produto produto) async {
+  Future<void> updateProduto(BuildContext context, Produto produto) async {
+    bool confirmar = await ConfirmacaoDialog.confirmarEdicao(context);
+    if (!confirmar) return;
+
     final response = await http.put(
       Uri.parse('$baseUrl/${produto.id}'),
       headers: {"Content-Type": "application/json"},
@@ -53,7 +58,10 @@ class ProdutoService {
     }
   }
 
-  Future<void> deleteProduto(int id) async {
+  Future<void> deleteProduto(BuildContext context, int id) async {
+    bool confirmar = await ConfirmacaoDialog.confirmarExclusao(context);
+    if (!confirmar) return;
+
     final response = await http.delete(Uri.parse('$baseUrl/$id'));
 
     if (response.statusCode != 200) {

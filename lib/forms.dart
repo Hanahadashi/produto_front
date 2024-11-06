@@ -50,13 +50,11 @@ class _ProdutoFormScreenState extends State<ProdutoFormScreen> {
 
     try {
       if (widget.produto == null) {
-        // Criando um novo produto
         await produtoService.createProduto(produto);
       } else {
-        // Atualizando um produto existente
-        await produtoService.updateProduto(produto);
+        await produtoService.updateProduto(context, produto);
       }
-      Navigator.pop(context, true);  // Retorna para a tela de listagem
+      Navigator.pop(context, true);
     } catch (error) {
       showDialog(
         context: context,

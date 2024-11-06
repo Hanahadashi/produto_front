@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'list.dart'; // Certifique-se de que o caminho e o nome estão corretos
+import 'list.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'CRUD de Produtos',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: ProdutoListScreen(), // Tela inicial
+      home: ProdutoListScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

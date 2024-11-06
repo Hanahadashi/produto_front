@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'produto.dart';
 import 'services.dart';
-import 'forms.dart'; // Importando a tela de criação/edição
+import 'forms.dart';
 
 class ProdutoListScreen extends StatefulWidget {
   @override
@@ -33,7 +33,6 @@ class _ProdutoListScreenState extends State<ProdutoListScreen> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () async {
-              // Navega para a tela de criação de produto
               final result = await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -41,7 +40,7 @@ class _ProdutoListScreenState extends State<ProdutoListScreen> {
                 ),
               );
               if (result == true) {
-                _refreshProdutos(); // Atualiza a lista após a criação
+                _refreshProdutos();
               }
             },
           ),
@@ -64,14 +63,13 @@ class _ProdutoListScreenState extends State<ProdutoListScreen> {
                 return ListTile(
                   title: Text(produto.description),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () async {
-                      await produtoService.deleteProduto(produto.id);
+                      icon: Icon(Icons.delete),
+                      onPressed: () async {
+                      await produtoService.deleteProduto(context, produto.id);
                       _refreshProdutos();
                     },
                   ),
                   onTap: () async {
-                    // Navega para a tela de edição de produto com o produto selecionado
                     final result = await Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -79,7 +77,7 @@ class _ProdutoListScreenState extends State<ProdutoListScreen> {
                       ),
                     );
                     if (result == true) {
-                      _refreshProdutos(); // Atualiza a lista após a edição
+                      _refreshProdutos();
                     }
                   },
                 );
